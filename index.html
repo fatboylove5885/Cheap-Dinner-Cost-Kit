@@ -1,70 +1,216 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>You're in! Your Real-Price Dinner Kit</title>
+<title>The Real-Price Dinner Kit</title>
 <style>
-:root{--bg:#FAF4EA;--ink:#2b2118;--tom:#C8402A;--grn:#3F6B3A;--tan:#F1E4D0;--line:#E3D3BC}
+:root{--bg:#FAF4EA;--ink:#2b2118;--tom:#C8402A;--grn:#3F6B3A;--tan:#F1E4D0;--line:#E3D3BC;--card:#FFFCF7}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
 .top{height:14px;background:var(--tom)}
-main{max-width:720px;margin:0 auto;padding:36px 20px 60px}
-h1,h2{font-family:Georgia,"Times New Roman",serif;line-height:1.15;margin:0}
-h1{font-size:clamp(2rem,7vw,3rem);margin-bottom:10px}h2{font-size:1.45rem;margin:34px 0 10px}
-.sub{color:var(--tom);font-style:italic;margin:0 0 22px}
-.cta{display:inline-block;background:var(--tom);color:#fff;font-weight:700;text-decoration:none;padding:15px 28px;border-radius:9px;font-size:1.05rem}
-.cta:hover{filter:brightness(1.08)}
-.ghost{display:inline-block;color:var(--grn);border:2px solid var(--grn);font-weight:600;text-decoration:none;padding:10px 18px;border-radius:9px;margin-left:8px}
-a:focus-visible{outline:3px solid var(--tom);outline-offset:3px}
-.steps{list-style:none;counter-reset:s;padding:0;margin:0}
-.steps li{counter-increment:s;position:relative;background:#FFFCF7;border:1px solid var(--line);border-radius:10px;padding:14px 16px 14px 58px;margin-bottom:10px}
-.steps li::before{content:counter(s);position:absolute;left:14px;top:12px;width:32px;height:32px;border-radius:50%;background:var(--grn);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
-.box{background:var(--tan);border-radius:10px;padding:14px 18px;margin:14px 0}
-.small{font-size:.9rem;opacity:.85}
-ul.l{padding-left:20px}ul.l li{margin-bottom:6px}
-.btns{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0 6px}
-.btns .ghost{margin-left:0}
-footer{margin-top:40px;font-size:.85rem;opacity:.75}
+header,main,footer{max-width:900px;margin:0 auto;padding:0 18px}
+header{padding-top:24px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.15;margin:0}
+h1{font-size:clamp(1.9rem,6vw,2.7rem)}h2{font-size:1.6rem;margin-bottom:6px}h3{font-size:1.1rem}
+.sub{color:var(--tom);font-style:italic;margin:6px 0 16px}
+nav{display:flex;gap:6px;flex-wrap:wrap;border-bottom:2px solid var(--line);padding-bottom:10px;margin-bottom:20px}
+nav button{font:inherit;font-weight:600;background:none;border:2px solid transparent;border-radius:6px;padding:7px 12px;color:var(--ink);cursor:pointer}
+nav button[aria-selected=true]{background:var(--grn);color:#fff}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--tom);outline-offset:2px}
+.lead{margin:0 0 14px}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 14px}
+.go{font:inherit;font-weight:700;background:var(--tom);color:#fff;border:0;border-radius:8px;padding:10px 18px;cursor:pointer}
+.ghost{font:inherit;font-weight:600;background:none;border:2px solid var(--grn);color:var(--grn);border-radius:8px;padding:7px 13px;cursor:pointer}
+.chip{font:inherit;font-size:.88rem;background:var(--tan);border:2px solid transparent;border-radius:99px;padding:5px 13px;cursor:pointer;color:var(--ink)}
+.chip[aria-pressed=true]{background:var(--grn);color:#fff}
+input,select,textarea{font:inherit;border:2px solid var(--line);border-radius:6px;padding:7px 9px;background:#fff;color:var(--ink);max-width:100%}
+input[type=number]{width:104px}
+.box{background:var(--tan);border-radius:8px;padding:12px 16px;margin:0 0 14px}
+.bar{height:10px;background:var(--line);border-radius:9px;overflow:hidden;margin:6px 0}.bar i{display:block;height:100%;background:var(--grn)}
+.bar.over i{background:var(--tom)}
+.cat{margin:18px 0 6px;color:var(--tom);font-size:.8rem;letter-spacing:.05em;font-weight:700}
+.pr{display:grid;grid-template-columns:1fr 112px auto;gap:6px 10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)}
+.pr small{display:block;opacity:.7}.pr label.own{font-size:.8rem;white-space:nowrap}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;margin:0 0 10px}
+.card>summary{list-style:none;cursor:pointer;padding:12px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.card>summary::-webkit-details-marker{display:none}
+.card .t{font-family:Georgia,serif;font-weight:700;flex:1 1 240px}
+.badge{background:var(--grn);color:#fff;font-weight:700;font-size:.82rem;padding:4px 11px;border-radius:3px;white-space:nowrap}
+.badge.no{background:#8a7a68}.meta{font-size:.78rem;color:var(--tom);font-weight:700}
+.body{padding:2px 16px 16px;border-top:1px solid var(--line)}
+.body h4{color:var(--tom);font-size:.76rem;letter-spacing:.05em;margin:14px 0 6px}
+.need{background:var(--tan);margin:0;padding:11px 16px 11px 30px;font-size:.92rem}.need small{opacity:.75;margin-left:6px}
+.how{padding-left:22px;margin:0}.how li{margin-bottom:6px}
+table{width:100%;border-collapse:collapse;font-size:.92rem;background:#fff}th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line)}
+th{background:var(--grn);color:#fff}td.n{text-align:right;white-space:nowrap}
+.item{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--line)}
+.empty{background:var(--tan);border-radius:8px;padding:16px;text-align:center}
+.pb h3{margin:18px 0 4px}.pb p,.pb li{margin:0 0 8px}
+footer{padding-bottom:40px;font-size:.8rem;opacity:.7}
+@media(max-width:560px){.pr{grid-template-columns:1fr 100px}.pr label.own{grid-column:1/-1}}
+@media print{.top,nav,.np,footer{display:none}body{background:#fff}}
 </style></head><body>
 <div class="top"></div>
-<main>
-<h1>You're in. Your kit is ready.</h1>
-<p class="sub">Thank you for grabbing The Real-Price Dinner Kit. Your wallet called, and it's relieved.</p>
-
-<div class="btns">
- <a class="cta" id="open" href="cheap-dinner-cost-kit.html">Open my Real-Price Dinner Kit</a>
- <a class="ghost" href="cheap-dinner-cost-kit.html" download="Dinner-Kit.html">Download a copy</a>
-</div>
-<p class="small">Opens in your browser, works on phone, tablet and computer. Nothing to install and no login.</p>
-
-<h2>Do this first (it takes about 10 minutes)</h2>
-<ol class="steps">
- <li><b>Bookmark it.</b> Save this page and the kit. On your phone, use Share, then Add to Home Screen, so it's one tap away at the store.</li>
- <li><b>Price your pantry once.</b> Open tab 1, type in your store and the month, then enter what each item costs. Every dinner prices itself from your numbers.</li>
- <li><b>Pick three dinners.</b> Open the week builder, choose your dinners, and see the checkout total before you leave the house.</li>
-</ol>
-
-<h2>What's inside</h2>
-<ul class="l">
- <li><b>Price your pantry:</b> 47 everyday items, entered once, re-used by every recipe.</li>
- <li><b>25 dinners:</b> full step-by-step recipes with a cost-per-serving badge, a picky-eater tweak and a "freezes well" tag.</li>
- <li><b>Week builder:</b> set a budget, plan up to 7 dinners and get a shopping list that rounds up to whole packages.</li>
- <li><b>Cost tracker:</b> a printable one-page sheet, plus rows to price your own family favorites.</li>
- <li><b>Playbook:</b> pantry heroes, stretch-it tricks and how to re-price each month.</li>
-</ul>
-
-<div class="box"><b>Good to know</b>
- <ul class="l" style="margin:8px 0 0">
-  <li>Your prices and plan are saved in the browser and device you use. Clearing that browser's site data erases them.</li>
-  <li>Use <b>Copy my prices</b> on tab 1 to back them up, or to move them to another device.</li>
-  <li>Re-enter prices when you change stores or once a month, since grocery prices move.</li>
-  <li>Cook poultry and reheated leftovers to 165°F.</li>
- </ul></div>
-
-<h2>Need a hand?</h2>
-<p>Something not working? Email <a href="mailto:silverraider12@gmail.com">you@yourwebsite.com</a> with a quick description and your browser name, and I'll sort it out. Refunds are handled through your Whop receipt.</p>
-
-<h2>Another tired-night saver</h2>
-<p>If dinner is less about the budget and more about having zero energy left, <a href="https://whop.com/life-shapers/the-5-47-p-m-rescue-kit-lazy-dinner-planner">The 5:47 p.m. Rescue Kit</a> sorts 20 lazy dinners by how tired you are, with the dish count shown.</p>
-
-<footer>For personal and household use. Please don't resell or redistribute the kit. Thanks for supporting a small kitchen business.</footer>
-</main></body></html>
+<header><h1>The Real-Price Dinner Kit</h1><p class="sub">25 cheap family dinners, priced at your store, in your month.</p><nav id="nav" role="tablist" aria-label="Kit sections"></nav></header>
+<main id="app"></main>
+<footer>Recipes are written from standard methods. Cook poultry and reheated leftovers to 165°F. Amounts used per recipe are estimates against the package size shown, so price what you would actually buy. Oil, salt, pepper and common dried spices are treated as free pantry staples. Your prices and plan are saved in this browser only. For personal and household use.</footer>
+<script>
+const ITEMS=`rice|Long-grain white rice|2 lb bag|Dry & canned
+spag|Spaghetti|1 lb box|Dry & canned
+ziti|Ziti or penne|1 lb box|Dry & canned
+shells|Small shells or elbows|1 lb box|Dry & canned
+lentils|Dried brown lentils|1 lb bag|Dry & canned
+blackb|Canned black beans|15 oz can|Dry & canned
+pinto|Canned pinto or kidney beans|15 oz can|Dry & canned
+dtom|Canned diced tomatoes|14.5 oz can|Dry & canned
+tsauce|Canned tomato sauce|15 oz can|Dry & canned
+marinara|Jarred marinara|24 oz jar|Dry & canned
+broth|Chicken broth|32 oz carton|Dry & canned
+soy|Soy sauce|10 oz bottle|Dry & canned
+stuff|Stuffing mix|6 oz box|Dry & canned
+ketchup|Ketchup|20 oz bottle|Dry & canned
+tacos|Taco seasoning|1 oz packet|Dry & canned
+salsa|Salsa|16 oz jar|Dry & canned
+pmix|Pancake mix|32 oz box|Dry & canned
+syrup|Pancake syrup|12 oz bottle|Dry & canned
+onion|Yellow onions|3 lb bag|Produce
+potato|Russet potatoes|5 lb bag|Produce
+carrot|Carrots|2 lb bag|Produce
+cabbage|Green cabbage|1 head|Produce
+celery|Celery|1 bunch|Produce
+peasc|Frozen peas and carrots|12 oz bag|Frozen
+mixv|Frozen mixed vegetables|12 oz bag|Frozen
+broc|Frozen broccoli|12 oz bag|Frozen
+stirv|Frozen stir-fry vegetables|16 oz bag|Frozen
+gbean|Frozen green beans|12 oz bag|Frozen
+corn|Frozen corn|12 oz bag|Frozen
+mball|Frozen cooked meatballs|24 oz bag|Frozen
+egg|Eggs|1 dozen|Dairy & eggs
+cheddar|Shredded cheddar|16 oz bag|Dairy & eggs
+mozz|Shredded mozzarella|16 oz bag|Dairy & eggs
+ricotta|Ricotta|15 oz tub|Dairy & eggs
+milk|Milk|1/2 gallon|Dairy & eggs
+butter|Butter|1 lb box|Dairy & eggs
+sour|Sour cream|16 oz tub|Dairy & eggs
+tortel|Refrigerated cheese tortellini|20 oz package|Dairy & eggs
+beef|Ground beef|1 lb package|Meat
+sausage|Smoked sausage|14 oz package|Meat
+drum|Chicken drumsticks|about 3 lb family pack|Meat
+thigh|Chicken thighs or breasts|2 lb pack|Meat
+tort|Flour tortillas|10-count pack|Bread & wraps
+bun|Hamburger buns|8-count pack|Bread & wraps
+sub|Sub rolls|6-count pack|Bread & wraps`.split("\n").map(l=>{const[a,b,c,d]=l.split("|");return{id:a,name:b,pkg:c,cat:d}});
+const IT=Object.fromEntries(ITEMS.map(i=>[i.id,i]));
+const RC=["Pasta & rice","Chicken & ground meat","Meatless, egg & soup"];
+let R=[];
+function r(name,cat,time,serves,fz,tweak,ing,steps){R.push({n:R.length+1,name,cat,time,serves,fz,tweak,ing:ing.split(";").map(s=>{const[i,sh,tx]=s.split(":");return{id:i,sh:+sh,tx}}),steps:steps.split("~")})}
+r("Baked ziti","Pasta & rice","10 min + 55 bake",6,1,"Stir the ricotta in so it hides, and give the pickiest eater a plain bowl with extra cheese.","ziti:1:1 lb ziti;marinara:1:1 jar marinara;tsauce:1:1 can tomato sauce;ricotta:.5:1 cup ricotta;mozz:.5:2 cups mozzarella","Heat the oven to 375°F.~In a 9x13 dish stir the dry ziti, marinara, tomato sauce, 1 1/2 cups hot water and 1 tsp Italian seasoning until every piece is covered.~Dot with the ricotta and half the mozzarella. Cover tightly with foil and bake 50 to 55 minutes.~Remove the foil, top with the rest of the cheese and bake 8 to 10 minutes uncovered. Rest 10 minutes.");
+r("Cheeseburger pasta","Pasta & rice","30 min",6,1,"Grate the onion so it melts away, and serve pickles on the side for the grown-ups.","ziti:.75:12 oz ziti;beef:1:1 lb ground beef;onion:.08:1/2 onion;tsauce:1:1 can tomato sauce;ketchup:.1:2 tbsp ketchup;milk:.125:1 cup milk;cheddar:.5:2 cups cheddar","Brown the beef with the chopped onion in a big pot and drain any fat.~Add the pasta, tomato sauce, ketchup and 2 cups water. Simmer covered 15 to 18 minutes, stirring often, until the pasta is tender.~Stir in the milk and cheese until melted.");
+r("One-pot spaghetti","Pasta & rice","25 min",5,1,"Break the noodles short so they're easy to twirl, or serve the sauce on the side.","spag:.75:12 oz spaghetti;marinara:1:1 jar marinara;onion:.08:1/2 onion;broth:.5:2 cups broth;mozz:.25:1 cup mozzarella","Break the spaghetti in half and put it in a wide pot with the marinara, broth, 1 cup water and the chopped onion.~Bring to a boil, then simmer 12 to 15 minutes, stirring often, until the pasta is tender and the sauce clings.~Top with the cheese, cover for 2 minutes, then serve.");
+r("Creamy beef and shells","Pasta & rice","30 min",6,1,"Use mild cheddar and skip the onion for the suspicious eaters.","shells:.75:12 oz shells;beef:1:1 lb ground beef;onion:.08:1/2 onion;broth:.5:2 cups broth;milk:.25:2 cups milk;butter:.06:2 tbsp butter;cheddar:.5:2 cups cheddar","Brown the beef and onion in a large pot, then drain.~Add the shells, broth and 1 cup water. Simmer 12 minutes, stirring, until tender.~Stir in the butter, milk and cheese and cook 2 minutes until creamy.");
+r("Egg fried rice","Pasta & rice","15 min",4,0,"Serve the peas on the side and let people stir them in.","rice:.3:1 1/2 cups dry rice, cooked;egg:.33:4 eggs;peasc:1:1 bag frozen peas and carrots;soy:.15:3 tbsp soy sauce;onion:.08:1/2 onion","Cook the rice, spread it on a plate and let it cool (cold rice fries best).~Heat oil in a large skillet. Cook the onion and frozen vegetables 3 minutes. Push aside, scramble the beaten eggs, then mix together.~Add the rice, press it down and let it crisp 2 minutes. Stir, add the soy sauce and taste.");
+r("Chicken and rice skillet","Pasta & rice","35 min",5,1,"Cut the chicken small and call it chicken bites.","thigh:.75:1 1/2 lb chicken, cut small;rice:.3:1 1/2 cups dry rice;broth:.75:3 cups broth;mixv:1:1 bag frozen mixed vegetables;cheddar:.25:1 cup cheddar;onion:.08:1/2 onion","Brown the chicken and onion in a deep skillet 5 minutes. Season with garlic powder, salt and pepper.~Add the rice and broth, bring to a boil, cover and simmer on low 15 minutes.~Stir in the vegetables, cover 5 more minutes until the rice is tender and the chicken reaches 165°F. Top with cheese.");
+r("Rice and bean bowls","Pasta & rice","20 min",4,0,"Build-your-own bowls let everyone leave out what they don't like.","rice:.2:1 cup dry rice, cooked;blackb:2:2 cans black beans;salsa:.5:1 cup salsa;cheddar:.25:1 cup cheddar;sour:.25:1/2 cup sour cream;corn:1:1 bag frozen corn","Cook the rice.~Heat the beans (drained, rinsed) with the corn, cumin and a splash of water until hot, about 5 minutes.~Spoon over rice and set out the salsa, cheese and sour cream.");
+r("Tortellini bake","Pasta & rice","30 min",5,0,"Skip the broccoli for one plate and let the cheese do the talking.","tortel:1:1 package tortellini;marinara:1:1 jar marinara;mozz:.25:1 cup mozzarella;broc:1:1 bag frozen broccoli","Heat the oven to 400°F. Boil the tortellini about 3 minutes, adding the broccoli for the last minute, and drain.~Stir with the marinara in a baking dish and top with the cheese.~Bake 12 to 15 minutes until bubbly.");
+r("Sheet-pan sausage and potatoes","Chicken & ground meat","40 min",4,0,"Cut the potatoes small so they crisp, and let people skip the beans.","sausage:1:1 package sausage, sliced;potato:.35:about 1 3/4 lb potatoes, cubed;gbean:1:1 bag green beans;onion:.08:1/2 onion","Heat the oven to 425°F and line a sheet pan with foil.~Toss the potatoes and onion with oil, garlic powder, salt and pepper. Roast 20 minutes.~Add the sausage and green beans, stir and roast 15 to 18 minutes until browned.");
+r("Baked drumsticks with rice","Chicken & ground meat","55 min",5,0,"Drumsticks are finger food, which is half the battle.","drum:1:about 3 lb drumsticks;rice:.3:1 1/2 cups dry rice;broc:1:1 bag frozen broccoli","Heat the oven to 425°F. Pat the drumsticks dry, toss with oil, garlic powder, salt and pepper, and spread on a lined pan.~Bake 40 to 45 minutes, turning once, until they reach 175°F near the bone and the skin is crisp.~Cook the rice on the stove and microwave the broccoli. Serve together.");
+r("Taco skillet","Chicken & ground meat","25 min",5,1,"Serve toppings separately, since taco night belongs to the eater.","beef:1:1 lb ground beef;rice:.2:1 cup dry rice;tacos:1:1 packet taco seasoning;salsa:.5:1 cup salsa;blackb:1:1 can black beans;cheddar:.25:1 cup cheddar","Brown the beef in a deep skillet and drain.~Stir in the taco seasoning, rice, salsa, 1 1/2 cups water and the drained beans. Bring to a boil, cover, and simmer 15 to 18 minutes until the rice is tender.~Top with cheese and cover 2 minutes to melt.");
+r("Sloppy joes","Chicken & ground meat","25 min",6,1,"Serve the meat on a plate with the bun on the side for sauce-wary kids.","beef:1:1 lb ground beef;onion:.08:1/2 onion;tsauce:1:1 can tomato sauce;ketchup:.15:3 tbsp ketchup;bun:.75:6 buns","Brown the beef and onion, then drain.~Stir in the tomato sauce, ketchup, 1 tbsp sugar, garlic powder, salt and pepper. Simmer 10 minutes until thick.~Toast the buns if you have the energy and pile the meat on top.");
+r("Stuffing meatloaf","Chicken & ground meat","60 min",6,1,"Shape it into muffin-tin mini loaves and watch them vanish.","beef:2:2 lb ground beef;stuff:1:1 box stuffing mix;egg:.17:2 eggs;ketchup:.2:1/2 cup ketchup, divided;onion:.08:1/2 onion;gbean:1:1 bag green beans","Heat the oven to 375°F.~Mix the beef, dry stuffing mix, eggs, onion, 1/2 cup water and half the ketchup. Shape in a loaf pan or on a lined sheet.~Spread the remaining ketchup on top. Bake 50 to 55 minutes until it reaches 160°F. Steam the green beans to serve.");
+r("Chicken quesadillas","Chicken & ground meat","25 min",4,0,"Plain cheese for the picky one, chicken for everyone else.","thigh:.5:1 lb chicken, cut small;tort:.8:8 tortillas;cheddar:.5:2 cups cheddar;salsa:.25:1/2 cup salsa;sour:.25:1/2 cup sour cream","Cook the chicken with oil, cumin, chili powder, salt and pepper 8 minutes until it reaches 165°F.~Sprinkle cheese and chicken on half of each tortilla and fold.~Toast in a skillet 2 to 3 minutes per side until golden. Cut and serve with salsa and sour cream.");
+r("Cabbage and sausage skillet","Chicken & ground meat","25 min",4,0,"Slice the cabbage thin so it reads like noodles.","cabbage:.5:half a head of cabbage;sausage:1:1 package sausage, sliced;potato:.3:about 1 1/2 lb potatoes, small cubes;onion:.08:1/2 onion","Cook the potatoes in a covered skillet with a little oil and water 8 minutes.~Add the sausage and onion and brown 5 minutes.~Add the cabbage, salt and pepper, cover and cook 6 to 8 minutes until tender.");
+r("Meatball subs","Chicken & ground meat","25 min",4,0,"Skip the roll and serve meatballs over buttered pasta.","mball:1:1 bag frozen meatballs;marinara:1:1 jar marinara;sub:.67:4 sub rolls;mozz:.25:1 cup mozzarella","Simmer the frozen meatballs in the marinara 15 to 18 minutes until hot (165°F).~Split the rolls, fill with meatballs and sauce and top with cheese.~Broil 1 to 2 minutes until melted, watching closely.");
+r("Black bean soup","Meatless, egg & soup","35 min",5,1,"Blend half so it's thick and smooth, with no whole beans to spot.","blackb:3:3 cans black beans;onion:.08:1/2 onion;carrot:.1:2 carrots;broth:.5:2 cups broth;salsa:.25:1/2 cup salsa;sour:.125:1/4 cup sour cream","Cook the onion and carrots in oil 5 minutes.~Add the beans with their liquid, broth, salsa, 1 tsp cumin and 1 cup water. Simmer 20 minutes.~Mash or blend some of it for body, then taste and add salt. Top with sour cream.");
+r("Lentil soup","Meatless, egg & soup","45 min",6,1,"Blend it smooth and call it a creamy tomato soup.","lentils:.5:1 cup dry lentils;carrot:.15:3 carrots;onion:.08:1/2 onion;celery:.15:3 stalks celery;dtom:1:1 can diced tomatoes;broth:.75:3 cups broth","Cook the chopped onion, carrots and celery in oil 6 minutes.~Add the rinsed lentils, tomatoes, broth, 3 cups water, cumin, salt and pepper.~Simmer 30 to 35 minutes until the lentils are soft. Thin with water if needed.");
+r("Potato soup","Meatless, egg & soup","40 min",5,0,"Skip the toppings and add the cheese last so it reads as mac and cheese soup.","potato:.4:2 lb potatoes, cubed;onion:.08:1/2 onion;broth:.5:2 cups broth;milk:.25:2 cups milk;butter:.06:2 tbsp butter;cheddar:.25:1 cup cheddar","Melt the butter and cook the onion 4 minutes. Add the potatoes and broth plus 1 cup water.~Simmer 15 to 18 minutes until the potatoes are fork tender. Mash some right in the pot.~Stir in the milk and cheese and heat gently. Season well. (Dairy soups can turn grainy after freezing.)");
+r("Veggie fried rice","Meatless, egg & soup","20 min",4,0,"Chop the vegetables small and call it confetti rice.","rice:.3:1 1/2 cups dry rice, cooked;stirv:1:1 bag stir-fry vegetables;egg:.17:2 eggs;soy:.15:3 tbsp soy sauce","Cook the rice and let it cool.~Stir-fry the frozen vegetables in oil 5 minutes. Push aside and scramble the eggs.~Add the rice and soy sauce and cook, pressing, 3 to 4 minutes until crisp at the edges.");
+r("Breakfast for dinner","Meatless, egg & soup","20 min",4,1,"Let the kids choose pancakes, eggs or both.","pmix:.25:2 cups pancake mix;egg:.5:6 eggs;milk:.125:1 cup milk;syrup:.25:1/4 bottle syrup;butter:.06:2 tbsp butter","Mix the pancake mix with the milk and 1 egg and cook on a buttered griddle until bubbles form, then flip.~Scramble the remaining eggs in butter over low heat.~Serve with syrup. Leftover pancakes freeze well.");
+r("Baked potato bar","Meatless, egg & soup","15 min + microwave",4,0,"Everyone builds their own, so no one can complain.","potato:.5:4 large potatoes;broc:1:1 bag frozen broccoli;cheddar:.25:1 cup cheddar;sour:.25:1/2 cup sour cream;butter:.06:2 tbsp butter","Scrub and poke the potatoes. Microwave 5 to 6 minutes for the first and 3 to 4 for each extra, flipping halfway, until a knife slides in.~Microwave the broccoli.~Split the potatoes and set out the toppings.");
+r("Cheese quesadillas","Meatless, egg & soup","20 min",4,0,"Keep the beans inside the quesadilla so no one sees them.","tort:.8:8 tortillas;cheddar:.5:2 cups cheddar;pinto:1:1 can beans, mashed;salsa:.25:1/2 cup salsa","Mash the drained beans with a fork and a pinch of cumin.~Spread beans and cheese on half of each tortilla and fold.~Toast 2 to 3 minutes per side until golden and serve with salsa.");
+r("Vegetable lo mein","Meatless, egg & soup","20 min",4,0,"Leave the veggies on the side and let the noodles do the work.","spag:.5:8 oz spaghetti;stirv:1:1 bag stir-fry vegetables;soy:.15:3 tbsp soy sauce;onion:.08:1/2 onion","Boil the spaghetti until tender, then drain.~Stir-fry the onion and vegetables in oil 5 minutes. Add the noodles, soy sauce, 1 tsp sugar and garlic powder.~Toss for 2 minutes until glossy.");
+r("Minestrone","Meatless, egg & soup","40 min",6,1,"Use tiny pasta so it's all about the broth and noodles.","shells:.25:4 oz shells;pinto:1:1 can beans;dtom:1:1 can diced tomatoes;carrot:.1:2 carrots;celery:.15:3 stalks celery;onion:.08:1/2 onion;mixv:1:1 bag frozen mixed vegetables;broth:.75:3 cups broth","Cook the onion, carrots and celery in oil 6 minutes.~Add the tomatoes, beans, broth, 3 cups water and 1 tbsp Italian seasoning. Simmer 15 minutes.~Add the pasta and frozen vegetables and cook 10 more minutes until tender. (Pasta soaks up broth, so thin with water when reheating.)");
+const TABS=[["price","1. Price your pantry"],["dinners","2. Dinners"],["week","3. Week builder"],["track","4. Cost tracker"],["play","5. Playbook"]];
+const DAYS=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+let S={tab:"price",store:"",month:"",price:{},own:{},week:Array(7).fill(null),budget:"",cat:"All",fz:false,max:"",sort:"n",custom:[{},{},{},{},{},{}]};
+try{Object.assign(S,JSON.parse(localStorage.getItem("rpdk")||"{}"))}catch(e){}
+const save=()=>{try{localStorage.setItem("rpdk",JSON.stringify(S))}catch(e){}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const $=s=>document.querySelector(s);const m=x=>"$"+x.toFixed(2);
+const P=id=>{const v=parseFloat(S.price[id]);return isFinite(v)&&v>=0?v:null};
+function cost(x){let t=0,miss=0;x.ing.forEach(i=>{const p=P(i.id);if(p===null)miss++;else t+=p*i.sh});return{t,miss,ps:miss?null:t/x.serves}}
+const priced=()=>ITEMS.filter(i=>P(i.id)!==null).length;
+function badge(x){const c=cost(x);return c.miss?`<span class="badge no">Price ${c.miss} more item${c.miss>1?"s":""}</span>`:`<span class="badge">${m(c.ps)} / serving</span>`}
+function vPrice(){
+ const groups=[...new Set(ITEMS.map(i=>i.cat))];
+ return `<h2>Price your pantry once</h2><p class="lead">Look up what each item costs at the store you actually shop at, and type it in. Every dinner re-prices itself. Enter the price for the package size shown.</p>
+ <div class="box row" style="margin-bottom:12px"><label>Store <input id="store" value="${esc(S.store)}" placeholder="e.g. Kroger"></label><label>Month <input id="month" value="${esc(S.month)}" placeholder="e.g. October 2026"></label></div>
+ <div class="box"><b id="prog">${priced()} of ${ITEMS.length} items priced.</b> <span>Dinners show a cost per serving once all their items are priced. Tick "have it" for pantry items you already own, so the week builder doesn't count them at checkout.</span></div>
+ ${groups.map(g=>`<div class="cat">${g.toUpperCase()}</div>${ITEMS.filter(i=>i.cat===g).map(i=>`<div class="pr"><div>${esc(i.name)}<small>${esc(i.pkg)}</small></div><div><label class="np" style="display:none" for="p${i.id}">Price</label>$ <input id="p${i.id}" type="number" min="0" step="0.01" inputmode="decimal" data-p="${i.id}" value="${S.price[i.id]??""}" placeholder="0.00"></div><label class="own np"><input type="checkbox" data-own="${i.id}" ${S.own[i.id]?"checked":""}> have it</label></div>`).join("")}`).join("")}
+ <div class="row np" style="margin-top:18px"><button class="go" data-tab="dinners">See my dinners</button><button class="ghost" id="exp">Copy my prices (backup)</button><button class="ghost" id="imp">Load prices from backup</button></div><textarea id="bk" class="np" rows="2" style="width:100%;display:none" placeholder="Paste backup here, then press Load again"></textarea>`;
+}
+function ingList(x){return `<ul class="need">${x.ing.map(i=>{const p=P(i.id);return `<li>${esc(i.tx)}${p!==null?`<small>${m(p*i.sh)}</small>`:""}</li>`}).join("")}</ul>`}
+function card(x,open){
+ const c=cost(x);
+ return `<details class="card" ${open?"open":""}><summary><span class="t">${x.n}. ${esc(x.name)}</span>${badge(x)}<span class="meta">${esc(x.time)} · serves ${x.serves}${x.fz?" · freezes well":""}</span></summary><div class="body">
+ <h4>WHAT YOU'LL NEED</h4>${ingList(x)}<p style="font-size:.85rem;margin:6px 0 0">Plus oil, salt, pepper and basic dried spices from the pantry (counted as free).${c.miss?"":` Total for this dinner: <b>${m(c.t)}</b>.`}</p>
+ <h4>HOW TO MAKE IT</h4><ol class="how">${x.steps.map(s=>`<li>${esc(s)}</li>`).join("")}</ol><p><b>Picky-eater tweak:</b> ${esc(x.tweak)}</p></div></details>`;
+}
+function vDinners(){
+ let l=R.filter(x=>(S.cat==="All"||x.cat===S.cat)&&(!S.fz||x.fz));
+ const mx=parseFloat(S.max);if(isFinite(mx))l=l.filter(x=>{const c=cost(x);return c.ps!==null&&c.ps<=mx});
+ if(S.sort==="cost")l=[...l].sort((a,b)=>{const A=cost(a).ps,B=cost(b).ps;return (A===null)-(B===null)||A-B});
+ return `<h2>25 cheap family dinners</h2><p class="lead">${priced()===ITEMS.length?"Every dinner is priced from your numbers.":"Cost badges appear as you price items on the first tab."}</p>
+ <div class="row">${["All",...RC].map(c=>`<button class="chip" data-cat="${esc(c)}" aria-pressed="${S.cat===c}">${esc(c)}</button>`).join("")}<button class="chip" id="fz" aria-pressed="${S.fz}">Freezes well</button></div>
+ <div class="row"><label>Sort <select id="sort"><option value="n" ${S.sort==="n"?"selected":""}>Menu order</option><option value="cost" ${S.sort==="cost"?"selected":""}>Cheapest per serving first</option></select></label><label>Max per serving $ <input id="max" type="number" min="0" step="0.25" value="${esc(S.max)}"></label></div>
+ ${l.map(x=>card(x)).join("")||'<p class="empty">No dinners match. Clear the max or finish pricing the pantry.</p>'}`;
+}
+function vWeek(){
+ const picks=S.week.map(n=>n?R[n-1]:null);const chosen=picks.filter(Boolean);
+ let body="";
+ if(chosen.length){
+  const sh={};chosen.forEach(x=>x.ing.forEach(i=>sh[i.id]=(sh[i.id]||0)+i.sh));
+  let used=0,pay=0,miss=[],lines=[];
+  Object.entries(sh).forEach(([id,s])=>{const p=P(id),pk=Math.ceil(s-1e-9);if(p===null){miss.push(IT[id].name);lines.push([id,pk,s,null]);return}used+=p*s;if(!S.own[id])pay+=p*pk;lines.push([id,pk,s,p])});
+  const serv=chosen.reduce((a,x)=>a+x.serves,0);const b=parseFloat(S.budget);const over=isFinite(b)&&pay>b;
+  body=`<div class="box"><b>${chosen.length} dinner${chosen.length>1?"s":""}, ${serv} servings.</b><br>${miss.length?`Add prices for ${miss.length} more item${miss.length>1?"s":""} to see totals (${esc(miss.join(", "))}).`:`Cost of what you'll use: <b>${m(used)}</b> (${m(used/serv)} per serving).<br>Cost at checkout, buying whole packages${Object.keys(S.own).some(k=>S.own[k])?" and skipping items you have":""}: <b>${m(pay)}</b>.${isFinite(b)?`<div class="bar ${over?"over":""}"><i style="width:${Math.min(100,pay/b*100)}%"></i></div>${over?`Over budget by ${m(pay-b)}.`:`${m(b-pay)} under budget.`}`:""}`}</div>
+  <h3 style="margin:14px 0 6px">Shopping list</h3>${lines.map(([id,pk,s,p])=>`<div class="item"><span>${S.own[id]?"<s>":""}${esc(IT[id].name)} <small>(${esc(IT[id].pkg)})</small>${S.own[id]?"</s> have it":""}</span><span class="n">${pk} × ${p!==null?m(p):"price?"}<small> (uses ${s.toFixed(2).replace(/\.?0+$/,"")})</small></span></div>`).join("")}
+  <div class="row np" style="margin-top:12px"><button class="ghost" onclick="window.print()">Print</button><button class="ghost" id="copyl">Copy list</button></div>`;
+ }else body='<p class="empty">Choose dinners above to build your shopping list and see the real checkout total.</p>';
+ return `<h2>Week builder</h2><p class="lead">Pick up to seven dinners. The tool adds up the packages you'd actually carry to the register, and the overlap between recipes is what saves you money.</p>
+ <div class="row"><label>Weekly dinner budget $ <input id="budget" type="number" min="0" step="1" value="${esc(S.budget)}"></label><button class="ghost np" id="clrwk">Clear week</button></div>
+ ${DAYS.map((d,i)=>`<div class="row"><b style="width:44px">${d}</b><select data-wk="${i}" aria-label="${d} dinner"><option value="">No dinner chosen</option>${R.map(x=>`<option value="${x.n}" ${S.week[i]==x.n?"selected":""}>${x.n}. ${esc(x.name)}</option>`).join("")}</select></div>`).join("")}${body}`;
+}
+function vTrack(){
+ const rows=R.map(x=>{const c=cost(x);return `<tr><td>${x.n}. ${esc(x.name)}</td><td class="n">${x.serves}</td><td class="n">${c.miss?"-":m(c.t)}</td><td class="n"><b>${c.miss?"-":m(c.ps)}</b></td></tr>`}).join("");
+ const cu=S.custom.map((c,i)=>{const t=parseFloat(c.t),s=parseFloat(c.s);const ps=t>=0&&s>0?m(t/s):"-";return `<tr><td><input data-cu="${i}:n" value="${esc(c.n||"")}" aria-label="Dinner name" style="width:100%"></td><td class="n"><input type="number" min="1" data-cu="${i}:s" value="${esc(c.s||"")}" aria-label="Servings" style="width:70px"></td><td class="n"><input type="number" min="0" step="0.01" data-cu="${i}:t" value="${esc(c.t||"")}" aria-label="Total cost" style="width:90px"></td><td class="n"><b>${ps}</b></td></tr>`}).join("");
+ return `<h2>Cheap Dinner Cost Tracker</h2><p class="lead">${esc(S.store||"Your store")}${S.month?" · "+esc(S.month):""}. Print it, screenshot it or keep it open.</p>
+ <div class="row np"><button class="go" onclick="window.print()">Print this sheet</button></div>
+ <table><tr><th>Recipe</th><th>Servings</th><th>Total cost</th><th>Per serving</th></tr>${rows}</table>
+ <h3 style="margin:22px 0 8px">Price your own favorites</h3><table><tr><th>Dinner</th><th>Servings</th><th>Total cost</th><th>Per serving</th></tr>${cu}</table>`;
+}
+function vPlay(){return `<div class="pb"><h2>The playbook</h2>
+<h3>How the math works</h3><p>Cost per serving = the price of the packages the recipe uses, divided by servings. Each recipe uses a share of each package. If a recipe uses about 3/10 of a rice bag and you pay a pretend $4.00 for the bag, rice costs $1.20 in that dinner. (Made-up numbers, just to show the math. Yours come from your receipt.) Oil, salt, pepper and dried spices are counted as free.</p>
+<h3>Why the checkout total beats the per-serving total</h3><p>You can't buy 3/10 of a bag of rice. The week builder rounds up to whole packages so you see what you'll actually pay, and shows the gap between the two so you can plan ways to use the leftovers.</p>
+<h3>The six pantry heroes</h3><ul><li><b>Rice:</b> turns a spoonful of protein into a full plate.</li><li><b>Pasta:</b> carries cheese and sauce for pennies.</li><li><b>Beans and lentils:</b> protein and fiber that stretch ground meat or replace it.</li><li><b>Eggs:</b> dinner in five minutes at any price level.</li><li><b>Potatoes:</b> filling, forgiving and easy to dress up.</li><li><b>Frozen vegetables:</b> no waste, no chopping and always ready.</li></ul><p>Flex ingredients: cabbage and rotisserie chicken (when it's on sale).</p>
+<h3>Stretch-it tricks</h3><ul><li>Roast or simmer one chicken and use it three ways.</li><li>Cook double rice and fry it the next night.</li><li>Fold leftover pasta into a frittata or bake it with extra cheese.</li><li>Freeze half of any soup, sloppy joe mix or pancake batch before you start eating.</li><li>Pick dinners that share ingredients. The week builder shows the overlap as fewer packages.</li></ul>
+<h3>Re-pricing tips</h3><p>Re-enter your prices every month or whenever you switch stores, and use the unit price on the shelf tag to compare package sizes. If your package is a different size than the one listed, scale your price to match the listed size.</p></div>`}
+const V={price:vPrice,dinners:vDinners,week:vWeek,track:vTrack,play:vPlay};
+function render(){$("#nav").innerHTML=TABS.map(([k,l])=>`<button role="tab" aria-selected="${S.tab===k}" data-tab="${k}">${l}</button>`).join("");$("#app").innerHTML=V[S.tab]();save()}
+document.addEventListener("click",e=>{const t=e.target.closest("button");if(!t)return;
+ if(t.dataset.tab){S.tab=t.dataset.tab;render();scrollTo(0,0)}
+ else if(t.dataset.cat){S.cat=t.dataset.cat;render()}
+ else if(t.id==="fz"){S.fz=!S.fz;render()}
+ else if(t.id==="clrwk"){S.week=Array(7).fill(null);render()}
+ else if(t.id==="exp"){const j=JSON.stringify({store:S.store,month:S.month,price:S.price,own:S.own});const bk=$("#bk");bk.style.display="block";bk.value=j;bk.select();(navigator.clipboard?navigator.clipboard.writeText(j):Promise.reject()).then(()=>t.textContent="Copied",()=>t.textContent="Copy it from the box")}
+ else if(t.id==="imp"){const bk=$("#bk");if(bk.style.display==="none"){bk.style.display="block";bk.value="";bk.focus();return}try{const d=JSON.parse(bk.value);S.store=d.store||"";S.month=d.month||"";S.price=d.price||{};S.own=d.own||{};render()}catch(x){t.textContent="That backup didn't load"}}
+ else if(t.id==="copyl"){const txt=[...document.querySelectorAll(".item")].map(i=>"- "+i.textContent.replace(/\s+/g," ").trim()).join("\n");(navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>t.textContent="Copied",()=>t.textContent="Select and copy the list")}});
+document.addEventListener("input",e=>{const t=e.target;
+ if(t.dataset.p){S.price[t.dataset.p]=t.value;save();$("#prog").textContent=priced()+" of "+ITEMS.length+" items priced."}
+ else if(t.id==="store"){S.store=t.value;save()}else if(t.id==="month"){S.month=t.value;save()}});
+document.addEventListener("change",e=>{const t=e.target;
+ if(t.dataset.own){S.own[t.dataset.own]=t.checked;save()}
+ else if(t.id==="sort"){S.sort=t.value;render()}
+ else if(t.id==="max"){S.max=t.value;render()}
+ else if(t.id==="budget"){S.budget=t.value;render()}
+ else if(t.dataset.wk!==undefined){S.week[+t.dataset.wk]=t.value?+t.value:null;render()}
+ else if(t.dataset.cu){const[i,k]=t.dataset.cu.split(":");S.custom[+i][k]=t.value;render()}});
+render();
+</script></body></html>
